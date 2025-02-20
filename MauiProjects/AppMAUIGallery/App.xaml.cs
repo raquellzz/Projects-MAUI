@@ -9,7 +9,11 @@
 
         protected override Window CreateWindow(IActivationState? activationState)
         {
-            return new Window(new AppShell());
+#if WINDOWS
+                    return new Window(new AppFlyout());
+#else
+            throw new PlatformNotSupportedException("Window is only supported on Windows.");
+#endif
         }
     }
 }
